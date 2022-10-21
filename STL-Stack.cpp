@@ -17,7 +17,7 @@ int main()
     cout << "The element present is stack are: " << endl;
     while (!st.empty())
     {
-        cout << st.top() << " ";
+        cout << st.top() <<" ";
         st.pop();
     }
     return 0;
