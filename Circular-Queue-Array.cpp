@@ -21,7 +21,7 @@ public:
     void push(int data)
     {
         //  Case 1 when queue is full.
-        if ((qFront == 0 && qRear == size - 1) || (qRear == (qFront - 1) % (size - 1)))
+        if ((qFront == 0 && qRear == size - 1) || (qFront != 0 && qRear == (qFront - 1) % (size - 1)))
         {
             cout << "Queue is full!" << endl;
         }
