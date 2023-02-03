@@ -21,6 +21,8 @@ public:
     }
 };
 
+// ! BUILDING TREES
+
 //* FUNCTION TO BUILD A B.TREE USING RECURSION => returns the root node;
 Node *build_B_Tree(Node *root)
 {
@@ -46,6 +48,40 @@ Node *build_B_Tree(Node *root)
     root->right = build_B_Tree(root->right);
 
     return root;
+}
+
+// * FUNCTION TO BUILD A B.TREE FROM LEVEL ORDER TRAVERSAL
+void build_Level_order(Node *&root)
+{
+    queue<Node *> q;
+    int val;
+    cout << "Enter the value for root node: ";
+    cin >> val;
+    root = new Node(val);
+    q.push(root); // Push the first node in the queue
+
+    while (q.empty() == false)
+    {
+        Node *temp = q.front();
+        q.pop();
+
+        cout << "Enter the value for left node of " << temp->data << ": ";
+        int leftData;
+        cin >> leftData;
+        if (leftData != -1)
+        {
+            temp->left = new Node(leftData);
+            q.push(temp->left);
+        }
+        cout << "Enter the value for right node of " << temp->data << ": ";
+        int rightData;
+        cin >> rightData;
+        if (rightData != -1)
+        {
+            temp->right = new Node(rightData);
+            q.push(temp->right);
+        }
+    }
 }
 
 // ! TREE TRAVERSALS
@@ -115,7 +151,6 @@ void preOrder(Node *root)
 }
 
 // * POSTORDER TRAVERSAL (LEFT RIGHT ROOT)
-
 void postOrder(Node *root)
 {
     // base case
@@ -134,16 +169,18 @@ int main()
     // Create a normal node which is NULL;
     // 1 3 7 -1 -1 11 -1 -1 5 17 -1 -1 -1
     Node *root = NULL;
-    root = build_B_Tree(root);
-    cout << "Level order traversal " << endl;
+    // root = build_B_Tree(root);
+    // cout << "Level order traversal " << endl;
+    // levelOrderTraversal(root);
+    // cout << "Inorder traversal " << endl;
+    // inOrder(root);
+    // cout << endl;
+    // cout << "Preorder traversal " << endl;
+    // preOrder(root);
+    // cout << endl;
+    // cout << "Postorder traversal " << endl;
+    // postOrder(root);
+    build_Level_order(root);
     levelOrderTraversal(root);
-    cout << "Inorder traversal " << endl;
-    inOrder(root);
-    cout << endl;
-    cout << "Preorder traversal " << endl;
-    preOrder(root);
-    cout << endl;
-    cout << "Postorder traversal " << endl;
-    postOrder(root);
     return 0;
 }
