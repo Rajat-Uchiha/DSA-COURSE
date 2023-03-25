@@ -111,18 +111,6 @@ void heapify(vector<int> &arr, int size, int index)
     }
 }
 
-void heapSort(vector<int> &arr, int size)
-{
-    int n = size;
-    while (n > 1)
-    {
-        swap(arr[1], arr[n]);
-        n--;
-
-        heapify(arr, size, 1);
-    }
-}
-
 int main()
 {
     Heap h;
