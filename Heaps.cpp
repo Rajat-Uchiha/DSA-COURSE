@@ -87,6 +87,30 @@ public:
     }
 };
 
+// Heapify (Max heap)
+void heapify(vector<int> &arr, int size, int index)
+{
+    int largest = index;
+    int left = 2 * index;
+    int right = 2 * index + 1;
+
+    if (left < size && arr[largest] < arr[left])
+    {
+        largest = left;
+    }
+    if (right < size && arr[largest] < arr[right])
+    {
+        largest = right;
+    }
+
+    // If index is updated
+    if (largest != index)
+    {
+        swap(arr[largest], arr[index]);
+        heapify(arr, size, largest);
+    }
+}
+
 int main()
 {
     Heap h;
@@ -98,6 +122,20 @@ int main()
     h.print();
     h.deletion();
     h.print();
+    cout << endl
+         << "-----------------------------" << endl;
+    vector<int> arr = {-1, 54, 53, 55, 52, 50};
 
+    int size = arr.size();
+    for (int i = size / 2; i > 0; i--)
+    {
+        heapify(arr, size, i);
+    }
+
+    cout << endl;
+    for (int i = 1; i < arr.size(); i++)
+    {
+        cout << arr[i] << " ";
+    }
     return 0;
 }
