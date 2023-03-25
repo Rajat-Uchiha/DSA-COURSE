@@ -1,6 +1,5 @@
 #include <bits/stdc++.h>
 using namespace std;
-
 class Heap
 {
     // Data members
@@ -47,6 +46,45 @@ public:
         }
         cout << endl;
     }
+
+    void deletion()
+    {
+
+        if (size == 0)
+        {
+            cout << "Nothing to delete " << endl;
+            return;
+        }
+
+        // Step 1;
+        arr[1] = arr[size];
+
+        // Step 2;
+        size--;
+
+        // Step 3
+        int i = 1;
+        while (i < size)
+        {
+            int leftIndex = 2 * i;
+            int rightIndex = 2 * i + 1;
+
+            if (leftIndex < size && arr[i] < arr[leftIndex])
+            {
+                swap(arr[i], arr[leftIndex]);
+                i = leftIndex;
+            }
+            else if (rightIndex < size && arr[i] < arr[rightIndex])
+            {
+                swap(arr[i], arr[rightIndex]);
+                i = rightIndex;
+            }
+            else
+            {
+                return;
+            }
+        }
+    }
 };
 
 int main()
@@ -57,6 +95,8 @@ int main()
     h.insert(4);
     h.insert(36);
     h.insert(1);
+    h.print();
+    h.deletion();
     h.print();
 
     return 0;
