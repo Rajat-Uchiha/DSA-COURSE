@@ -111,6 +111,18 @@ void heapify(vector<int> &arr, int size, int index)
     }
 }
 
+void heapSort(vector<int> &arr, int size)
+{
+    int n = size;
+    while (n > 1)
+    {
+        swap(arr[1], arr[n]);
+        n--;
+
+        heapify(arr, size, 1);
+    }
+}
+
 int main()
 {
     Heap h;
@@ -124,6 +136,8 @@ int main()
     h.print();
     cout << endl
          << "-----------------------------" << endl;
+
+    // ! HEAPIFY FUNCTION
     vector<int> arr = {-1, 54, 53, 55, 52, 50};
 
     int size = arr.size();
@@ -131,11 +145,10 @@ int main()
     {
         heapify(arr, size, i);
     }
-
-    cout << endl;
     for (int i = 1; i < arr.size(); i++)
     {
         cout << arr[i] << " ";
     }
+
     return 0;
 }
