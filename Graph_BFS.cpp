@@ -5,6 +5,8 @@
 #include <queue>
 using namespace std;
 
+
+//! Adjacency list 
 unordered_map<int, list<int>> adj;
 class graph
 {
@@ -96,7 +98,7 @@ int main()
     //*Stores the answer
     vector<int> BFS;
 
-    //* Create the visited datastructure
+    //* Create the visited data structure -> To take care of the node which are already visited.
     unordered_map<int, bool> visited;
 
     //*Traverse all the nodes ( nodes starting from 0 to n-1)
